@@ -1,0 +1,253 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "storeHash",
+						"type": "bytes32"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "winner",
+						"type": "address"
+					}
+				],
+				"name": "ReleasedFunds",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "storeHash",
+						"type": "bytes32"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "depositor",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes32",
+						"name": "identity",
+						"type": "bytes32"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "TokensStored",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "CHALLENGER_ROLE",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "PLAYER_ROLE",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"name": "escrowStorage",
+				"outputs": [
+					{
+						"internalType": "uint128",
+						"name": "totalAmount",
+						"type": "uint128"
+					},
+					{
+						"internalType": "address",
+						"name": "player",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "challenger",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "isActive",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "storeHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "address",
+						"name": "winner",
+						"type": "address"
+					}
+				],
+				"name": "releaseFunds",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "storeHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "identity",
+						"type": "bytes32"
+					}
+				],
+				"name": "storeTokens",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "A simple escrow contract for holding funds between two parties",
+			"events": {
+				"ReleasedFunds(bytes32,uint256,address)": {
+					"params": {
+						"amount": "The amount of Ether released",
+						"storeHash": "The unique hash identifying the escrow",
+						"winner": "The address receiving the funds"
+					}
+				},
+				"TokensStored(bytes32,address,bytes32,uint256)": {
+					"params": {
+						"amount": "The amount of Ether deposited",
+						"depositor": "The address of the depositor",
+						"identity": "The role of the depositor (PLAYER_ROLE or CHALLENGER_ROLE)",
+						"storeHash": "The unique hash identifying the escrow"
+					}
+				}
+			},
+			"kind": "dev",
+			"methods": {
+				"releaseFunds(bytes32,address)": {
+					"params": {
+						"storeHash": "The unique identifier for this escrow",
+						"winner": "The address that should receive the funds"
+					}
+				},
+				"storeTokens(bytes32,bytes32)": {
+					"params": {
+						"identity": "The role of the depositor (PLAYER_ROLE or CHALLENGER_ROLE)",
+						"storeHash": "The unique identifier for this escrow"
+					}
+				}
+			},
+			"title": "Escrow",
+			"version": 1
+		},
+		"userdoc": {
+			"events": {
+				"ReleasedFunds(bytes32,uint256,address)": {
+					"notice": "Emitted when funds are released from an escrow"
+				},
+				"TokensStored(bytes32,address,bytes32,uint256)": {
+					"notice": "Emitted when a deposit is made to an escrow"
+				}
+			},
+			"kind": "user",
+			"methods": {
+				"releaseFunds(bytes32,address)": {
+					"notice": "Release funds to the winner"
+				},
+				"storeTokens(bytes32,bytes32)": {
+					"notice": "Store tokens in the escrow"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Escrow.sol": "Escrow"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@openzeppelin/contracts/security/ReentrancyGuard.sol": {
+			"keccak256": "0xa535a5df777d44e945dd24aa43a11e44b024140fc340ad0dfe42acf4002aade1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://41319e7f621f2dc3733511332c4fd032f8e32ad2aa7fd6f665c19741d9941a34",
+				"dweb:/ipfs/QmcYR3bd862GD1Bc7jwrU9bGxrhUu5na1oP964bDCu2id1"
+			]
+		},
+		"Escrow.sol": {
+			"keccak256": "0xc3ec6bef417105515dc6b23c7202aeebf1f5cf7262a3b355995d28f22325e98d",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://307a0f12c6397b046d820b142865b26ee6c626602a0f55bd81ab28c01f079ea5",
+				"dweb:/ipfs/QmXgChk5pvdLdpkxHEmQ68griNQaZh79FVaXmNFhGgjSDR"
+			]
+		}
+	},
+	"version": 1
+}
