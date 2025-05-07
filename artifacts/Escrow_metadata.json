@@ -159,7 +159,7 @@
 			}
 		],
 		"devdoc": {
-			"details": "A simple escrow contract for holding funds between two parties",
+			"details": "An escrow contract for holding funds between two parties",
 			"events": {
 				"ReleasedFunds(bytes32,uint256,address)": {
 					"params": {
@@ -241,11 +241,11 @@
 			]
 		},
 		"Escrow.sol": {
-			"keccak256": "0xc3ec6bef417105515dc6b23c7202aeebf1f5cf7262a3b355995d28f22325e98d",
+			"keccak256": "0x406e21cab6bfb68f9f13af6a22ab70109cd2d658fcbc330642d561ad21da3eaf",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://307a0f12c6397b046d820b142865b26ee6c626602a0f55bd81ab28c01f079ea5",
-				"dweb:/ipfs/QmXgChk5pvdLdpkxHEmQ68griNQaZh79FVaXmNFhGgjSDR"
+				"bzz-raw://4b61f79fdaa1206a1320da62cd28e2943e77a9177ce662ed332e269a1d7708bf",
+				"dweb:/ipfs/Qmahvp6mpj1nY81uzyu2EF22Aqa5nKvBegcrryLh5HSKoE"
 			]
 		}
 	},

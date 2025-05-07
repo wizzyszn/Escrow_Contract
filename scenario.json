@@ -1,0 +1,227 @@
+{
+  "accounts": {
+    "account{0}": "0x5B38Da6a701c568545dCfcB03FcB875f56beddC4"
+  },
+  "linkReferences": {},
+  "transactions": [
+    {
+      "timestamp": 1746572392758,
+      "record": {
+        "value": "0",
+        "inputs": "()",
+        "parameters": [],
+        "name": "",
+        "type": "constructor",
+        "abi": "0x4689b792dd0f79f6e8e19ba6fbd70ca1bf0c5f1ee34dd0d6b51677dd0e6a4d3f",
+        "contractName": "Escrow",
+        "bytecode": "6080604052348015600e575f80fd5b5060015f5561074b806100205f395ff3fe608060405260043610610049575f3560e01c806316c30ebc1461004d5780632fa0b49f14610093578063530adbb4146100a85780637d25e89d146100db578063a0946f92146100fa575b5f80fd5b348015610058575f80fd5b506100807f326d994cdb81aaccb84aa1f62bae636dc0aaf98ab22f66b0c9224f1edccd7cc981565b6040519081526020015b60405180910390f35b6100a66100a13660046106a5565b610191565b005b3480156100b3575f80fd5b506100807fae8b6f0f354448b9bed217dcbb6effc6cc52560477cd31206503fbd937f7a37881565b3480156100e6575f80fd5b506100a66100f53660046106c5565b61042e565b348015610105575f80fd5b506101586101143660046106fe565b600160208190525f91825260409091208054918101546002909101546001600160801b03909216916001600160a01b0391821691811690600160a01b900460ff1684565b604080516001600160801b039590951685526001600160a01b03938416602086015291909216908301521515606082015260800161008a565b5f34116101d75760405162461bcd60e51b815260206004820152600f60248201526e125b9d985b1a590819195c1bdcda5d608a1b60448201526064015b60405180910390fd5b7f326d994cdb81aaccb84aa1f62bae636dc0aaf98ab22f66b0c9224f1edccd7cc981148061022457507fae8b6f0f354448b9bed217dcbb6effc6cc52560477cd31206503fbd937f7a37881145b6102635760405162461bcd60e51b815260206004820152601060248201526f496e76616c6964206964656e7469747960801b60448201526064016101ce565b6001600160801b033411156102ad5760405162461bcd60e51b815260206004820152601060248201526f416d6f756e7420746f6f206c6172676560801b60448201526064016101ce565b5f8281526001602052604090207fcd9266b3247e553347b55e09d4519c923f5506754dd0994f36ddb0e123328337820161034a5760018101546001600160a01b0316156103315760405162461bcd60e51b8152602060048201526012602482015271141b185e595c88185b1c9958591e481cd95d60721b60448201526064016101ce565b6001810180546001600160a01b031916331790556103b3565b60028101546001600160a01b03161561039e5760405162461bcd60e51b815260206004820152601660248201527510da185b1b195b99d95c88185b1c9958591e481cd95d60521b60448201526064016101ce565b6002810180546001600160a01b031916331790555b80546001600160801b03198116346001600160801b039283168101909216178255600282018054600160a01b60ff60a01b19909116179055604080518481526020810192909252339185917f47b2a1127ea8251f2643fef19daa05415bd86a2c7083f46f0ec1fd083e4a8a64910160405180910390a3505050565b61043661064e565b5f8281526001602052604090206002810154600160a01b900460ff166104955760405162461bcd60e51b8152602060048201526014602482015273457363726f77206973206e6f742061637469766560601b60448201526064016101ce565b60018101546001600160a01b03838116911614806104c2575060028101546001600160a01b038381169116145b6104ff5760405162461bcd60e51b815260206004820152600e60248201526d24b73b30b634b2103bb4b73732b960911b60448201526064016101ce565b80546001600160801b031661054c5760405162461bcd60e51b81526020600482015260136024820152724e6f2066756e647320746f2072656c6561736560681b60448201526064016101ce565b80546001600160801b03198116825560028201805460ff60a01b191690556040516001600160801b03909116906001600160a01b03841690829086907fa20198858d673ac3cf5d6f62c85cb502c39af8269735c0ef6774aff58154a429905f90a45f836001600160a01b0316826040515f6040518083038185875af1925050503d805f81146105f6576040519150601f19603f3d011682016040523d82523d5f602084013e6105fb565b606091505b505090508061063e5760405162461bcd60e51b815260206004820152600f60248201526e151c985b9cd9995c8819985a5b1959608a1b60448201526064016101ce565b50505061064a60015f55565b5050565b60025f540361069f5760405162461bcd60e51b815260206004820152601f60248201527f5265656e7472616e637947756172643a207265656e7472616e742063616c6c0060448201526064016101ce565b60025f55565b5f80604083850312156106b6575f80fd5b50508035926020909101359150565b5f80604083850312156106d6575f80fd5b8235915060208301356001600160a01b03811681146106f3575f80fd5b809150509250929050565b5f6020828403121561070e575f80fd5b503591905056fea2646970667358221220c9cb49079c4fb2dbf8bcf0cf4f899cb2c783bf3d72cbba76a3905ece1318dcfc64736f6c634300081a0033",
+        "linkReferences": {},
+        "from": "account{0}"
+      }
+    },
+    {
+      "timestamp": 1746572621020,
+      "record": {
+        "value": "1000000000000000000",
+        "inputs": "(bytes32,bytes32)",
+        "parameters": [
+          "0x9c22ff5f21f0b81b113e63f7db6da94fedef11b2119b4088b89664fb9a3cb658",
+          "0x326d994cdb81aaccb84aa1f62bae636dc0aaf98ab22f66b0c9224f1edccd7cc9"
+        ],
+        "name": "storeTokens",
+        "type": "function",
+        "to": "created{1746572392758}",
+        "abi": "0x4689b792dd0f79f6e8e19ba6fbd70ca1bf0c5f1ee34dd0d6b51677dd0e6a4d3f",
+        "from": "account{0}"
+      }
+    },
+    {
+      "timestamp": 1746572691634,
+      "record": {
+        "value": "1000000000000000000",
+        "inputs": "(bytes32,bytes32)",
+        "parameters": [
+          "0x9c22ff5f21f0b81b113e63f7db6da94fedef11b2119b4088b89664fb9a3cb658",
+          "0xae8b6f0f354448b9bed217dcbb6effc6cc52560477cd31206503fbd937f7a378"
+        ],
+        "name": "storeTokens",
+        "type": "function",
+        "to": "created{1746572392758}",
+        "abi": "0x4689b792dd0f79f6e8e19ba6fbd70ca1bf0c5f1ee34dd0d6b51677dd0e6a4d3f",
+        "from": "account{0}"
+      }
+    },
+    {
+      "timestamp": 1746572853911,
+      "record": {
+        "value": "0",
+        "inputs": "(bytes32,address)",
+        "parameters": [
+          "0x9c22ff5f21f0b81b113e63f7db6da94fedef11b2119b4088b89664fb9a3cb658",
+          "0x5B38Da6a701c568545dCfcB03FcB875f56beddC4"
+        ],
+        "name": "releaseFunds",
+        "type": "function",
+        "to": "created{1746572392758}",
+        "abi": "0x4689b792dd0f79f6e8e19ba6fbd70ca1bf0c5f1ee34dd0d6b51677dd0e6a4d3f",
+        "from": "account{0}"
+      }
+    }
+  ],
+  "abis": {
+    "0x4689b792dd0f79f6e8e19ba6fbd70ca1bf0c5f1ee34dd0d6b51677dd0e6a4d3f": [
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "bytes32",
+            "name": "storeHash",
+            "type": "bytes32"
+          },
+          {
+            "indexed": true,
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          },
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "winner",
+            "type": "address"
+          }
+        ],
+        "name": "ReleasedFunds",
+        "type": "event"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "bytes32",
+            "name": "storeHash",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "address",
+            "name": "winner",
+            "type": "address"
+          }
+        ],
+        "name": "releaseFunds",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "bytes32",
+            "name": "storeHash",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "identity",
+            "type": "bytes32"
+          }
+        ],
+        "name": "storeTokens",
+        "outputs": [],
+        "stateMutability": "payable",
+        "type": "function"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "bytes32",
+            "name": "storeHash",
+            "type": "bytes32"
+          },
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "depositor",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "internalType": "bytes32",
+            "name": "identity",
+            "type": "bytes32"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "TokensStored",
+        "type": "event"
+      },
+      {
+        "inputs": [],
+        "name": "CHALLENGER_ROLE",
+        "outputs": [
+          {
+            "internalType": "bytes32",
+            "name": "",
+            "type": "bytes32"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "bytes32",
+            "name": "",
+            "type": "bytes32"
+          }
+        ],
+        "name": "escrowStorage",
+        "outputs": [
+          {
+            "internalType": "uint128",
+            "name": "totalAmount",
+            "type": "uint128"
+          },
+          {
+            "internalType": "address",
+            "name": "player",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "challenger",
+            "type": "address"
+          },
+          {
+            "internalType": "bool",
+            "name": "isActive",
+            "type": "bool"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "PLAYER_ROLE",
+        "outputs": [
+          {
+            "internalType": "bytes32",
+            "name": "",
+            "type": "bytes32"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      }
+    ]
+  }
+}

@@ -5,7 +5,7 @@ import {ReentrancyGuard} from "@openzeppelin/contracts/security/ReentrancyGuard.
 
 /**
  * @title Escrow
- * @dev A simple escrow contract for holding funds between two parties
+ * @dev An escrow contract for holding funds between two parties
  */
 contract Escrow is ReentrancyGuard {
     bytes32 public constant PLAYER_ROLE = keccak256("player");
@@ -88,10 +88,9 @@ contract Escrow is ReentrancyGuard {
         escrow.totalAmount = 0;
         escrow.isActive = false;
 
-        // Emit event before external call
+        // Interactions
         emit ReleasedFunds(storeHash, amount, winner);
 
-        // Interactions: Use call instead of transfer for safer ETH sending
         (bool success, ) = winner.call{value: amount}("");
         require(success, "Transfer failed");
     }
