@@ -12,7 +12,7 @@ contract Escrow is ReentrancyGuard {
     bytes32 public constant CHALLENGER_ROLE = keccak256("challenger");
 
     struct Storage {
-        uint128 totalAmount; // Use uint128 to pack with other fields
+        uint128 totalAmount; // Used uint128 to pack with other fields
         address player;
         address challenger;
         bool isActive;
@@ -51,7 +51,6 @@ contract Escrow is ReentrancyGuard {
 
         Storage storage escrow = escrowStorage[storeHash];
 
-        // For new or existing escrows, validate participant slots
         if (identity == PLAYER_ROLE) {
             require(escrow.player == address(0), "Player already set");
             escrow.player = msg.sender;
@@ -60,13 +59,13 @@ contract Escrow is ReentrancyGuard {
             escrow.challenger = msg.sender;
         }
 
-        // Update state efficiently
+      
         unchecked {
             escrow.totalAmount += uint128(msg.value); // Safe due to prior check
         }
         escrow.isActive = true;
 
-        // Emit event
+  
         emit TokensStored(storeHash, msg.sender, identity, msg.value);
     }
 
