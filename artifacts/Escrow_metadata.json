@@ -127,6 +127,25 @@
 						"internalType": "bytes32",
 						"name": "storeHash",
 						"type": "bytes32"
+					}
+				],
+				"name": "getCurrentBalance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "storeHash",
+						"type": "bytes32"
 					},
 					{
 						"internalType": "address",
@@ -241,11 +260,11 @@
 			]
 		},
 		"Escrow.sol": {
-			"keccak256": "0x406e21cab6bfb68f9f13af6a22ab70109cd2d658fcbc330642d561ad21da3eaf",
+			"keccak256": "0x6f697104455bbc1e57b0f4fef1a59d5f1c93caa8df1390ac9df66ebea0c1f09d",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://4b61f79fdaa1206a1320da62cd28e2943e77a9177ce662ed332e269a1d7708bf",
-				"dweb:/ipfs/Qmahvp6mpj1nY81uzyu2EF22Aqa5nKvBegcrryLh5HSKoE"
+				"bzz-raw://920c01d2d0e775a79889b9ef14c284b2366d4c5a4dc00c8a8267889344d35f1d",
+				"dweb:/ipfs/QmU1TgLYzyk4TVv7BW7yjUeJWaJvSYmubk329R19wAcPZL"
 			]
 		}
 	},

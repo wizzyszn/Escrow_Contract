@@ -93,4 +93,9 @@ contract Escrow is ReentrancyGuard {
         (bool success, ) = winner.call{value: amount}("");
         require(success, "Transfer failed");
     }
+
+    function getCurrentBalance(bytes32 storeHash) external view returns(uint){
+        Storage storage escrow = escrowStorage[storeHash];
+        return uint128(escrow.totalAmount);
+    }
 }
