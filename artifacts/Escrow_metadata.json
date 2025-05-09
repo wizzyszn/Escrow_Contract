@@ -16,6 +16,44 @@
 					},
 					{
 						"indexed": true,
+						"internalType": "address",
+						"name": "acceptor",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes32",
+						"name": "choice",
+						"type": "bytes32"
+					}
+				],
+				"name": "BetAccepted",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "storeHash",
+						"type": "bytes32"
+					}
+				],
+				"name": "DrawDeclared",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "storeHash",
+						"type": "bytes32"
+					},
+					{
+						"indexed": true,
 						"internalType": "uint256",
 						"name": "amount",
 						"type": "uint256"
@@ -49,6 +87,18 @@
 						"indexed": false,
 						"internalType": "bytes32",
 						"name": "identity",
+						"type": "bytes32"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes32",
+						"name": "matchId",
+						"type": "bytes32"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes32",
+						"name": "choice",
 						"type": "bytes32"
 					},
 					{
@@ -91,6 +141,50 @@
 				"inputs": [
 					{
 						"internalType": "bytes32",
+						"name": "storeHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "choice",
+						"type": "bytes32"
+					}
+				],
+				"name": "acceptBet",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "betCounter",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "storeHash",
+						"type": "bytes32"
+					}
+				],
+				"name": "declareDraw",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
 						"name": "",
 						"type": "bytes32"
 					}
@@ -98,9 +192,9 @@
 				"name": "escrowStorage",
 				"outputs": [
 					{
-						"internalType": "uint128",
-						"name": "totalAmount",
-						"type": "uint128"
+						"internalType": "bytes32",
+						"name": "matchId",
+						"type": "bytes32"
 					},
 					{
 						"internalType": "address",
@@ -113,8 +207,28 @@
 						"type": "address"
 					},
 					{
+						"internalType": "bytes32",
+						"name": "choiceA",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "choiceB",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint128",
+						"name": "totalAmount",
+						"type": "uint128"
+					},
+					{
 						"internalType": "bool",
 						"name": "isActive",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "isResolved",
 						"type": "bool"
 					}
 				],
@@ -162,13 +276,18 @@
 				"inputs": [
 					{
 						"internalType": "bytes32",
-						"name": "storeHash",
+						"name": "matchId",
 						"type": "bytes32"
 					},
 					{
 						"internalType": "bytes32",
-						"name": "identity",
+						"name": "choice",
 						"type": "bytes32"
+					},
+					{
+						"internalType": "address",
+						"name": "acceptor",
+						"type": "address"
 					}
 				],
 				"name": "storeTokens",
@@ -178,36 +297,39 @@
 			}
 		],
 		"devdoc": {
-			"details": "An escrow contract for holding funds between two parties",
-			"events": {
-				"ReleasedFunds(bytes32,uint256,address)": {
-					"params": {
-						"amount": "The amount of Ether released",
-						"storeHash": "The unique hash identifying the escrow",
-						"winner": "The address receiving the funds"
-					}
-				},
-				"TokensStored(bytes32,address,bytes32,uint256)": {
-					"params": {
-						"amount": "The amount of Ether deposited",
-						"depositor": "The address of the depositor",
-						"identity": "The role of the depositor (PLAYER_ROLE or CHALLENGER_ROLE)",
-						"storeHash": "The unique hash identifying the escrow"
-					}
-				}
-			},
+			"details": "An escrow contract for holding funds between two parties for betting on sports events",
 			"kind": "dev",
 			"methods": {
+				"acceptBet(bytes32,bytes32)": {
+					"params": {
+						"choice": "The choice of the acceptor (e.g., opposing team)",
+						"storeHash": "The unique identifier for the bet"
+					}
+				},
+				"declareDraw(bytes32)": {
+					"params": {
+						"storeHash": "The unique identifier for this escrow"
+					}
+				},
+				"getCurrentBalance(bytes32)": {
+					"params": {
+						"storeHash": "The unique identifier for the bet"
+					},
+					"returns": {
+						"_0": "The total amount staked in the bet"
+					}
+				},
 				"releaseFunds(bytes32,address)": {
 					"params": {
 						"storeHash": "The unique identifier for this escrow",
 						"winner": "The address that should receive the funds"
 					}
 				},
-				"storeTokens(bytes32,bytes32)": {
+				"storeTokens(bytes32,bytes32,address)": {
 					"params": {
-						"identity": "The role of the depositor (PLAYER_ROLE or CHALLENGER_ROLE)",
-						"storeHash": "The unique identifier for this escrow"
+						"acceptor": "The address of the intended acceptor",
+						"choice": "The choice of the proposer (e.g., team to win)",
+						"matchId": "The unique identifier for the match"
 					}
 				}
 			},
@@ -215,21 +337,22 @@
 			"version": 1
 		},
 		"userdoc": {
-			"events": {
-				"ReleasedFunds(bytes32,uint256,address)": {
-					"notice": "Emitted when funds are released from an escrow"
-				},
-				"TokensStored(bytes32,address,bytes32,uint256)": {
-					"notice": "Emitted when a deposit is made to an escrow"
-				}
-			},
 			"kind": "user",
 			"methods": {
+				"acceptBet(bytes32,bytes32)": {
+					"notice": "Accept a bet proposal"
+				},
+				"declareDraw(bytes32)": {
+					"notice": "Declare a draw and refund both parties"
+				},
+				"getCurrentBalance(bytes32)": {
+					"notice": "Get the current balance of a bet"
+				},
 				"releaseFunds(bytes32,address)": {
 					"notice": "Release funds to the winner"
 				},
-				"storeTokens(bytes32,bytes32)": {
-					"notice": "Store tokens in the escrow"
+				"storeTokens(bytes32,bytes32,address)": {
+					"notice": "Create a bet proposal"
 				}
 			},
 			"version": 1
@@ -260,11 +383,11 @@
 			]
 		},
 		"Escrow.sol": {
-			"keccak256": "0x6f697104455bbc1e57b0f4fef1a59d5f1c93caa8df1390ac9df66ebea0c1f09d",
+			"keccak256": "0xd9dd4bc459ef4b3118c1450c09ca5585abf8214b96984bc6106b9c5fc4aae317",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://920c01d2d0e775a79889b9ef14c284b2366d4c5a4dc00c8a8267889344d35f1d",
-				"dweb:/ipfs/QmU1TgLYzyk4TVv7BW7yjUeJWaJvSYmubk329R19wAcPZL"
+				"bzz-raw://01deef22eeaa519009690016565508616a636d6b5da3a245103469ebaaa35ad1",
+				"dweb:/ipfs/QmfNT83udK9sUdFzpWpoAitsAbRi1gq4pmgJnhxop4SXyo"
 			]
 		}
 	},
