@@ -6,6 +6,39 @@
 	"output": {
 		"abi": [
 			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_oracleAddress",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					}
+				],
+				"name": "OwnableInvalidOwner",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "OwnableUnauthorizedAccount",
+				"type": "error"
+			},
+			{
 				"anonymous": false,
 				"inputs": [
 					{
@@ -41,6 +74,44 @@
 					}
 				],
 				"name": "DrawDeclared",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "oldOracle",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOracle",
+						"type": "address"
+					}
+				],
+				"name": "OracleUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
 				"type": "event"
 			},
 			{
@@ -255,6 +326,32 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "oracleAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "bytes32",
@@ -268,6 +365,13 @@
 					}
 				],
 				"name": "releaseFunds",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "renounceOwnership",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -294,67 +398,64 @@
 				"outputs": [],
 				"stateMutability": "payable",
 				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_newOracleAddress",
+						"type": "address"
+					}
+				],
+				"name": "updateOracle",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
 			}
 		],
 		"devdoc": {
-			"details": "An escrow contract for holding funds between two parties for betting on sports events",
+			"errors": {
+				"OwnableInvalidOwner(address)": [
+					{
+						"details": "The owner is not a valid owner account. (eg. `address(0)`)"
+					}
+				],
+				"OwnableUnauthorizedAccount(address)": [
+					{
+						"details": "The caller account is not authorized to perform an operation."
+					}
+				]
+			},
 			"kind": "dev",
 			"methods": {
-				"acceptBet(bytes32,bytes32)": {
-					"params": {
-						"choice": "The choice of the acceptor (e.g., opposing team)",
-						"storeHash": "The unique identifier for the bet"
-					}
+				"owner()": {
+					"details": "Returns the address of the current owner."
 				},
-				"declareDraw(bytes32)": {
-					"params": {
-						"storeHash": "The unique identifier for this escrow"
-					}
+				"renounceOwnership()": {
+					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner."
 				},
-				"getCurrentBalance(bytes32)": {
-					"params": {
-						"storeHash": "The unique identifier for the bet"
-					},
-					"returns": {
-						"_0": "The total amount staked in the bet"
-					}
-				},
-				"releaseFunds(bytes32,address)": {
-					"params": {
-						"storeHash": "The unique identifier for this escrow",
-						"winner": "The address that should receive the funds"
-					}
-				},
-				"storeTokens(bytes32,bytes32,address)": {
-					"params": {
-						"acceptor": "The address of the intended acceptor",
-						"choice": "The choice of the proposer (e.g., team to win)",
-						"matchId": "The unique identifier for the match"
-					}
+				"transferOwnership(address)": {
+					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
 				}
 			},
-			"title": "Escrow",
 			"version": 1
 		},
 		"userdoc": {
 			"kind": "user",
-			"methods": {
-				"acceptBet(bytes32,bytes32)": {
-					"notice": "Accept a bet proposal"
-				},
-				"declareDraw(bytes32)": {
-					"notice": "Declare a draw and refund both parties"
-				},
-				"getCurrentBalance(bytes32)": {
-					"notice": "Get the current balance of a bet"
-				},
-				"releaseFunds(bytes32,address)": {
-					"notice": "Release funds to the winner"
-				},
-				"storeTokens(bytes32,bytes32,address)": {
-					"notice": "Create a bet proposal"
-				}
-			},
+			"methods": {},
 			"version": 1
 		}
 	},
@@ -374,6 +475,14 @@
 		"remappings": []
 	},
 	"sources": {
+		"@openzeppelin/contracts/access/Ownable.sol": {
+			"keccak256": "0xff6d0bb2e285473e5311d9d3caacb525ae3538a80758c10649a4d61029b017bb",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8ed324d3920bb545059d66ab97d43e43ee85fd3bd52e03e401f020afb0b120f6",
+				"dweb:/ipfs/QmfEckWLmZkDDcoWrkEvMWhms66xwTLff9DDhegYpvHo1a"
+			]
+		},
 		"@openzeppelin/contracts/security/ReentrancyGuard.sol": {
 			"keccak256": "0xa535a5df777d44e945dd24aa43a11e44b024140fc340ad0dfe42acf4002aade1",
 			"license": "MIT",
@@ -382,12 +491,20 @@
 				"dweb:/ipfs/QmcYR3bd862GD1Bc7jwrU9bGxrhUu5na1oP964bDCu2id1"
 			]
 		},
+		"@openzeppelin/contracts/utils/Context.sol": {
+			"keccak256": "0x493033a8d1b176a037b2cc6a04dad01a5c157722049bbecf632ca876224dd4b2",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6a708e8a5bdb1011c2c381c9a5cfd8a9a956d7d0a9dc1bd8bcdaf52f76ef2f12",
+				"dweb:/ipfs/Qmax9WHBnVsZP46ZxEMNRQpLQnrdE4dK8LehML1Py8FowF"
+			]
+		},
 		"Escrow.sol": {
-			"keccak256": "0xd9dd4bc459ef4b3118c1450c09ca5585abf8214b96984bc6106b9c5fc4aae317",
+			"keccak256": "0xbc530a234c76f4371cea467545cd23a50753956161b859e1e218637f275ac952",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://01deef22eeaa519009690016565508616a636d6b5da3a245103469ebaaa35ad1",
-				"dweb:/ipfs/QmfNT83udK9sUdFzpWpoAitsAbRi1gq4pmgJnhxop4SXyo"
+				"bzz-raw://eeee1754d2b816ae9145687cac251779c9f44cf1ba0b1eab06c339bd2bf6528e",
+				"dweb:/ipfs/QmQbgjxfzdYW1BrdjBteuej8nrs699K7HCNZEKRUo8MauM"
 			]
 		}
 	},
